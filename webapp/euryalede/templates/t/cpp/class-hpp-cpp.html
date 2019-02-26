@@ -23,28 +23,27 @@
     <!-- head                                                                   -->
     <!--========================================================================-->
     <head>
-        <title>Create C++ Class</title>
+        <title>Euryalede - Create C++ Class</title>
         <!--========================================================================-->
         <!-- style                                                                  -->
         <!--========================================================================-->
-        <style
-         type="text/css">
+        <link rel="stylesheet" type="text/css" href="../../t/css/html-form-css.t"></link>
+        <style type="text/css">
         </style>
+
         <!--========================================================================-->
         <!-- script                                                                 -->
         <!--========================================================================-->
-        <script language="javaScript" src="../../t/js/html-form-js.t"></script>
-        <script
-         language="JavaScript"
-         type="text/JavaScript">
+        <script type="text/javascript" src="../../t/js/html-form-js.t"></script>
+        <script type="text/javascript">
         </script>
     </head>
+
     <!--========================================================================-->
     <!-- body                                                                   -->
     <!--========================================================================-->
     <body>
-        <h3>Create C++ Class</h3>
-        <hr>
+        <h3><a href="class-hpp-cpp.html">Create C++ Class</a></h3>
         <!--========================================================================-->
         <!-- form                                                                   -->
         <!--========================================================================-->
@@ -52,18 +51,20 @@
          Action="class-hpp-cpp.t"
          Method="POST"
          Name="Form"
-         onSubmit="return setFormSubmit(getFormValue2('Template','FormAction','Form'),getFormValue('FormMethod','Form'),'Form')">
-            File: <input name="file" value="%Name%"/>
+         onSubmit="return setFormSubmit(getFormValue2('FormTemplate','FormAction','Form'),getFormValue('FormMethod','Form'),'Form')">
+         <div class="form"><hr>
+            File: <input name="file" value=""/>[%Name%]
             <input type="radio" name="extension" value="hpp" checked="checked">.hpp</input>
             <input type="radio" name="extension" value="cpp">.cpp</input>
             <input type="radio" name="extension" value="h">.h</input>
             <input type="radio" name="extension" value="c">.c</input>
             <br/>
-            Template: <select name="Template">
-            <option value="class-hpp-cpp.t">C++ class</option>
-            <option value="hpp-cpp.t">C/C++</option>
-            <option value="Exception-class-hpp-cpp.t">C++ Exception class</option>
-            <option value="/xde-cgi/xde-cgi">CGI parameters</option>
+            Template: <select name="FormTemplate">
+            <option value="class-hpp-cpp.t">C++ class (class-hpp-cpp.t)</option>
+            <option value="hpp-cpp.t">C/C++ (hpp-cpp.t)</option>
+            <option value="Implement-class-hpp-cpp.t">C++ Implement class (Implement-class-hpp-cpp.t)</option>
+            <option value="Exception-class-hpp-cpp.t">C++ Exception class (Exception-class-hpp-cpp.t)</option>
+            <option value="/xde-cgi/cgi">CGI parameters (/xde-cgi/cgi)</option>
             <option value=""/>
             </select><br/>
             <br/>
@@ -79,28 +80,51 @@
             <input type="checkbox" name="is_namespace" value="no" unchecked=""/>no<br/>
             <br/>
             
-            <b>enum</b> <input name="enum_name" value=""/> <b>{</b>
-            <input name="enum_value" value=""/>;... <b>};</b>
+            <b>enum</b> <input name="enum_name" value=""/>
+            <b>{</b><input name="enum_value" value=""/>;... <b>}; /// enum</b>
             <input type="checkbox" name="is_enum" value="no" unchecked=""/>no<br/>
             <br/>
-            
+
+            <b>template &lt;</b> <input name="template" value=""/><b>&gt;</b>
+            <input type="checkbox" name="is_template" value="no" unchecked=""/>no<br/>
             <b>class</b> <input name="name" value=""/>[name]
             <input type="checkbox" name="is_name" value="no" unchecked=""/>no<br/>
             <b>: virtual public</b> <input name="implements" value=""/>[%Name%Implement]
             <input type="checkbox" name="is_implements" value="no" unchecked=""/>no<br/>
             <b>, public</b> <input name="extends" value=""/>[%Name%Extend]
             <input type="checkbox" name="is_extends" value="no" unchecked=""/>no<br>
-            <b>{}</b>;<br/>
+            <b>{}; /// class</b><br/>
             <br/>
 
-            <b>}</b> /// namespace<br/>
+            <b>} /// namespace</b><br/>
             <br/>
 
-            Action: <input name="FormAction" value="class-hpp-cpp.t"/><br/>
-            Method: <input name="FormMethod" value="POST"/><br/>
-            onSublit: <input name="onSublit" value="return setFormSubmit(getFormValue('%Name%Action','%Name%'),getFormValue('%Name%Method','%Name%'),'%Name%')"/><br/>
-            <hr/>
+            Content-Type: <select name="content_type">
+            <option value="text/plain">text</option>
+            <option value="text/html">html</option>
+            <option value="text/xml">xml</option>
+            <option value="application/json">json</option>
+            <option value="application/javascript">javascript</option>
+            <option value=""></option>
+            </select><br/>
+            Action: <select name="FormAction">
+            <option value="class-hpp-cpp.t">class-hpp-cpp.t</option>
+            <option value="/xde-cgi/cgi">/xde-cgi/cgi</option>
+            <option value=""></option>
+            </select><br/>
+            Method: <select name="FormMethod">
+            <option value="POST">POST</option>
+            <option value="GET">GET</option>
+            <option value=""></option>
+            </select><br/>
+            <br/>
+
             <input type="submit" name="submit" value="submit"/><br/>
+            <hr/></div>
+
+            <table><tr>            
+            <td><a href="../../../../../.."><b>/euryalede/</b></a></td>
+            </tr></table>
         </form>
     </body>
 </html>

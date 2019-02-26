@@ -52,37 +52,57 @@
 )%,Include)%,
 )%%
 %%Namespace_begin%%
-%typedef ImplementBase %Implements%TImplements;
+%%if-no(%is_name%,,%(%if(%Extends%,%(%if(%Implements%,%(typedef %Implements% %NameT%Implements;
+)%)%typedef %Extends% %NameT%Extends;
 ///////////////////////////////////////////////////////////////////////
-///  Class: %Implements%T
+///  Class: %NameT%
 ///////////////////////////////////////////////////////////////////////
-template <class TImplements = %Implements%TImplements>
-class _EXPORT_CLASS %Implements%T: virtual public TImplements {
+%if-no(%is_template%,,%(template <%if(%Implements%,%(class TImplements = %NameT%Implements, )%)%class TExtends = %NameT%Extends>
+)%)%class _EXPORT_CLASS %NameT%: %if(%Implements%,%(virtual public %TImplements%, )%)%public %TExtends% {
 public:
-    typedef TImplements Implements;
-};
-typedef %Implements%T<> %Implements%;
+    %if(%Implements%,%(typedef %TImplements% Implements;
+    )%)%typedef %TExtends% Extends;
 
-typedef %Implements% %Name%TImplements;
-%if(%Extends%,%(typedef %Extends% %Name%TExtends;
-)%)%///////////////////////////////////////////////////////////////////////
-///  Class: %Name%T
+    %NameT%(const %NameT%& copy) {
+    }
+    %NameT%() {
+    }
+    virtual ~%NameT%() {
+    }
+}; /// class _EXPORT_CLASS %NameT%
+%if-no(%is_template%,,%(typedef %NameT%<> %Name%;
+)%)%)%,%(%if(%Implements%,%(typedef %Implements% %NameT%Implements;
 ///////////////////////////////////////////////////////////////////////
-template <class TImplements = %Name%TImplements, class TExtends = %Name%TExtends>
-class _EXPORT_CLASS %Name%T: virtual public TImplements%if(%Extends%,%(, public TExtends)%)% {
+///  Class: %NameT%
+///////////////////////////////////////////////////////////////////////
+%if-no(%is_template%,,%(template <class TImplements = %NameT%Implements>
+)%)%class _EXPORT_CLASS %NameT%: virtual public %TImplements% {
 public:
-    typedef TImplements Implements;
-    %if(%Extends%,%(typedef TExtends Extends;
-)%)%
-    %Name%T(const %Name%T &copy) {
+    typedef %TImplements% Implements;
+
+    %NameT%(const %NameT%& copy) {
     }
-    %Name%T() {
+    %NameT%() {
     }
-    virtual ~%Name%T() {
+    virtual ~%NameT%() {
     }
-};
-typedef %Name%T<> %Name%;
-%Namespace_end%
+}; /// class _EXPORT_CLASS %NameT%
+%if-no(%is_template%,,%(typedef %NameT%<> %Name%;
+)%)%)%,%(///////////////////////////////////////////////////////////////////////
+///  Class: %NameT%
+///////////////////////////////////////////////////////////////////////
+%if-no(%is_template%,,%(template <class TClass = TBase>
+)%)%class _EXPORT_CLASS %NameT% {
+public:
+    %NameT%(const %NameT%& copy) {
+    }
+    %NameT%() {
+    }
+    virtual ~%NameT%() {
+    }
+}; /// class _EXPORT_CLASS %NameT%
+%if-no(%is_template%,,%(typedef %NameT%<> %Name%;
+)%)%)%)%)%)%)%)%%Namespace_end%
 #endif /// %IFNDEF_DIRECTORY%_%BASE%_%EXTENSION% 
 %
 %)%)%
